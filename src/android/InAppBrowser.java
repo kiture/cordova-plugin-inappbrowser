@@ -62,6 +62,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.webkit.PermissionRequest;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.Config;
@@ -939,6 +940,11 @@ public class InAppBrowser extends CordovaPlugin {
                         // Run cordova startActivityForResult
                         cordova.startActivityForResult(InAppBrowser.this, Intent.createChooser(content, "Select File"), FILECHOOSER_REQUESTCODE);
                         return true;
+                    }
+
+                    @Override
+                    public void onPermissionRequest(final PermissionRequest request) {                        
+                        request.grant(request.getResources());                        
                     }
                 });
                 currentClient = new InAppBrowserClient(thatWebView, edittext, beforeload);
