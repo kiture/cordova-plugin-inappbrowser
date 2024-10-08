@@ -259,7 +259,7 @@ static CDVWKInAppBrowser* instance = nil;
             if(!initHidden || osVersion < 11){
                 [self->tmpWindow makeKeyAndVisible];
             }
-            [tmpController presentViewController:nav animated:!noAnimate completion:nil];
+            [tmpController presentViewController:nav animated:NO completion:nil];
         }
     });
 }
